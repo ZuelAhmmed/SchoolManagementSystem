@@ -1,0 +1,98 @@
+C#  Station:
+http://www.csharp-station.com/tutorial.aspx
+
+Bootstrap Datatable:
+https://www.youtube.com/watch?v=nIQHk8KXqWs
+
+
+JQuery: Datatable
+https://www.youtube.com/watch?v=z5CIMlLNOe4
+https://www.youtube.com/watch?v=oCouA3tuA3o
+https://www.youtube.com/watch?v=yTKIbBD0p4o
+
+
+https://www.youtube.com/watch?v=Tf_KtJ-YVwo&index=13&list=PLgH5QX0i9K3o8Y-CKhmyodbfHAc9VSVOv
+
+https://www.facebook.com/Ridichetipassaaaaaa/videos/10153966969552427/
+
+Migrations
+https://www.youtube.com/watch?v=4sshCSThuiU&list=PL5MZid1lr-vLd5ec3m1__Xn_1zvyjhOcD&index=15
+
+NuGet Command:
+
+Install-Package
+Install- EntityFramework
+Install-Package bootbox
+Install-Package Bootstrap
+Install-Package Bootstrap.Datepicker
+
+
+enable-migrations -ContextTypeName UMS.Models.MyDBContext -MigrationsDirectory:MyDbContext
+Enable-Migrations -ContextTypeName MyDbContext
+Add-Migration AgeFieldAdded
+Update-Database -verbose
+
+
+ImageDb
+Enable-Migrations -ContextTypeName ImageDbContext
+Add-Migration -configuration UMS.Migrations.Configuration Initial
+Update-Database -configuration UMS.Migrations.Configuration -Verbose
+
+
+
+
+
+
+Add-Migration -configuration UMS.MyDBContext.Configuration Initial
+
+Update-Database -configuration ICMS.DataContextMigrations.Configuration -Verbose
+
+
+
+ protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+     
+
+StreetView
+https://www.youtube.com/watch?v=Pwaks9igz9w&index=10&list=PLP7qPet500ddn7-6Wy0cjW8qaTQFs9S2B
+
+Trigger:
+http://www.aspsnippets.com/Articles/Simple-Insert-Update-and-Delete-Triggers-in-SQL-Server-with-example.aspx
+https://technet.microsoft.com/en-us/library/aa258254(v=sql.80).aspx
+
+Thumbnails:
+http://forums.asp.net/t/1976497.aspx?ASP+Net+MVC+5+Upload+Image+Save+to+Database+Create+Thumbnail+and+Display+in+View
+http://stackoverflow.com/questions/7319842/mvc3-razor-thumbnail-resize-image-ideas
+
+
+Gan:
+https://www.youtube.com/watch?v=OfEhuG6zuug
+https://www.youtube.com/watch?v=KKVg1Phyxr8&list=RDtR2pA5YZr-U&index=27
+https://www.youtube.com/watch?v=i-ar-KDNtrY&index=10&list=RDOfEhuG6zuug
+
+
+
+http://stackoverflow.com/questions/3853767/maximum-request-length-exceeded
+
+
+
+
+
+enable-migrations -ContextTypeName ICMS.Models.ImageDbContext -MigrationsDirectory:ImageDataContextMigrations
+
+Add-Migration -configuration ICMS.ImageDataContextMigrations.Configuration Initial
+
+Update-Database -configuration ICMS.ImageDataContextMigrations.Configuration -Verbose
+
+
+
+enable-migrations -ContextTypeName StartupInstitute.Models.DbModels.MediaDbContext -MigrationsDirectory:InstituteDbMigrations
+enable-migrations -ContextTypeName StartupInstitute.Models.DbModels.InstituteDbContext -MigrationsDirectory:InstituteDbMigrations
+
+Add-Migration -configuration StartupInstitute.InstituteDbMigrations.Configuration Initial
+Add-Migration -configuration StartupInstitute.MediaDbMigrations.Configuration Initial
+
+Update-Database -configuration StartupInstitute.InstituteDbMigrations.Configuration -Verbose
+Update-Database -configuration StartupInstitute.MediaDbMigrations.Configuration -Verbose
