@@ -44,6 +44,16 @@ namespace StartupInstitute.Controllers
             ViewStudentAttendence objStudentAttendence = new ViewStudentAttendence();
             objStudentAttendence.Class = new SelectList(db.ClassOrYears.OrderBy(s => s.Name), "Code", "Name");
            // ViewBag.ClassOrYearId = new SelectList(db.ClassOrYears.OrderBy(s => s.Name), "Code", "Name");
+            var students = db.StudentAttendences.Where(x => x.DateTime.Year == DateTime.Now.Year &&
+                
+                                               x.DateTime.Month == DateTime.Now.Month && x.DateTime.Day == DateTime.Now.Day);
+
+
+            ViewBag.StudentList = students;
+
+
+
+
             return View(objStudentAttendence);
         }
 
@@ -59,11 +69,21 @@ namespace StartupInstitute.Controllers
             {
                 db.StudentAttendences.Add(objStudentAttendence.StudentAttendence);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+              
+               
             }
             objStudentAttendence.Class = new SelectList(db.ClassOrYears.OrderBy(s => s.Name), "Code", "Name", objStudentAttendence.Class);
 
           //  ViewBag.ClassOrYearId = new SelectList(db.ClassOrYears.OrderBy(s => s.Name), "Code", "Name", studentAttendence.ClassOrYearId);
+
+            var students = db.StudentAttendences.Where(x => x.DateTime.Year == DateTime.Now.Year &&
+
+                                              x.DateTime.Month == DateTime.Now.Month && x.DateTime.Day == DateTime.Now.Day);
+
+
+            ViewBag.StudentList = students;
+            
+
             return View(objStudentAttendence);
         }
 
@@ -134,5 +154,7 @@ namespace StartupInstitute.Controllers
             }
             base.Dispose(disposing);
         }
+
+      
     }
 }
