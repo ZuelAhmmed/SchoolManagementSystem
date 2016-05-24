@@ -46,11 +46,12 @@ namespace StartupInstitute.Controllers
            // ViewBag.ClassOrYearId = new SelectList(db.ClassOrYears.OrderBy(s => s.Name), "Code", "Name");
             var students = db.StudentAttendences.Where(x => x.DateTime.Year == DateTime.Now.Year &&
                 
-                                               x.DateTime.Month == DateTime.Now.Month && x.DateTime.Day == DateTime.Now.Day);
+                                               x.DateTime.Month == DateTime.Now.Month && x.DateTime.Day == DateTime.Now.Day).ToList();
 
 
-            ViewBag.StudentList = students;
-
+          //  ViewBag.StudentList = students; change here....
+            //  StudentAttendenceList Declare ViewStudentAttendence(View Models) 
+            objStudentAttendence.StudentAttendenceList = students;
 
 
 
@@ -67,6 +68,19 @@ namespace StartupInstitute.Controllers
          //   Id,ClassOrYearId,TotalStudent,FemaleStudentNo,TotalPresentStudent,PresentFemaleStudent,DateTime
             if (ModelState.IsValid)
             {
+
+                if (objStudentAttendence.StudentAttendence.TotalPresentStudent > objStudentAttendence.StudentAttendence.TotalStudent)
+                {
+                    TempData["Message"] = "Pls Enter Total valid Present Student!!";
+                     return RedirectToAction("Create");
+                }
+                if (objStudentAttendence.StudentAttendence.PresentFemaleStudent > objStudentAttendence.StudentAttendence.FemaleStudentNo)
+                {
+                    TempData["Message"] = "Pls Enter Valid Present Female Student";
+                    return RedirectToAction("Create");
+                }
+
+
                 db.StudentAttendences.Add(objStudentAttendence.StudentAttendence);
                 db.SaveChanges();
               
@@ -78,11 +92,11 @@ namespace StartupInstitute.Controllers
 
             var students = db.StudentAttendences.Where(x => x.DateTime.Year == DateTime.Now.Year &&
 
-                                              x.DateTime.Month == DateTime.Now.Month && x.DateTime.Day == DateTime.Now.Day);
+                                              x.DateTime.Month == DateTime.Now.Month && x.DateTime.Day == DateTime.Now.Day).ToList();
 
 
-            ViewBag.StudentList = students;
-            
+          //  ViewBag.StudentList = students; change here
+            objStudentAttendence.StudentAttendenceList = students;
 
             return View(objStudentAttendence);
         }
@@ -145,6 +159,23 @@ namespace StartupInstitute.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult GetTotalStudent(string classCode)
+        {
+            if (classCode !=null)
+            {
+                var totaStudentCount = db.StudentAccounts.Where(c => c.ClassOrYearId == classCode).Count();
+                var femaleStudentCount = db.StudentAccounts.Where(c => c.ClassOrYearId == classCode && c.Gender == "Female").Count();
+
+                return Json(new { result = "success", totaStudentCount = totaStudentCount, femaleStudentCount = femaleStudentCount }, JsonRequestBehavior.AllowGet);
+            
+            }
+           
+            return Json(new {result = "error"}, JsonRequestBehavior.AllowGet);
+
+        }
+
 
         protected override void Dispose(bool disposing)
         {

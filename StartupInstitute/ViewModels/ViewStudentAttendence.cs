@@ -11,6 +11,10 @@ namespace StartupInstitute.ViewModels
     {
         public SelectList Class { get; set; }
         public StudentAttendence StudentAttendence { get; set; }
+        public List<StudentAttendence> StudentAttendenceList { get; set; }
+        public int TotalStudent { get; set; }
+        public int TotalFemaleStudent { get; set; }
+
 
 
     }

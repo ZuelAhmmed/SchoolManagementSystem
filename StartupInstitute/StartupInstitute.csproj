@@ -432,6 +432,7 @@
     <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\EmployeeAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentAccountController.cs" />
     <Compile Include="Controllers\StudentAttendenceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -537,6 +538,11 @@
     <Content Include="Views\EmployeeAccount\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\StudentAccount\Create.cshtml" />
+    <Content Include="Views\StudentAccount\Delete.cshtml" />
+    <Content Include="Views\StudentAccount\Details.cshtml" />
+    <Content Include="Views\StudentAccount\Edit.cshtml" />
+    <Content Include="Views\StudentAccount\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
