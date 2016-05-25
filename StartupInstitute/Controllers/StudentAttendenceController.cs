@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using StartupInstitute.Models;
 using StartupInstitute.Models.DbModels;
 using StartupInstitute.ViewModels;
+using Newtonsoft.Json;
 
 namespace StartupInstitute.Controllers
 {
@@ -20,6 +21,8 @@ namespace StartupInstitute.Controllers
         public ActionResult Index()
         {
             var studentAttendences = db.StudentAttendences.Include(s => s.ClassOrYears);
+
+
             return View(studentAttendences.ToList());
         }
 
@@ -79,6 +82,12 @@ namespace StartupInstitute.Controllers
                     TempData["Message"] = "Pls Enter Valid Present Female Student";
                     return RedirectToAction("Create");
                 }
+                if (objStudentAttendence.StudentAttendence.PresentFemaleStudent > objStudentAttendence.StudentAttendence.TotalStudent)
+                {
+                    TempData["Message"] = "Pls Enter Valid Present Female Student";
+                    return RedirectToAction("Create");
+                }
+
 
 
                 db.StudentAttendences.Add(objStudentAttendence.StudentAttendence);
@@ -174,7 +183,30 @@ namespace StartupInstitute.Controllers
            
             return Json(new {result = "error"}, JsonRequestBehavior.AllowGet);
 
+
         }
+
+        //public ActionResult GetStudentsByDate(string from, string to)
+        //{
+           
+           
+
+        //    if(!(String.IsNullOrEmpty(from) && String.IsNullOrEmpty(to)))
+        //    {
+
+        //        DateTime FromDate = Convert.ToDateTime(from);
+        //        DateTime toDate = Convert.ToDateTime(to);
+
+
+
+        //        var students = db.StudentAttendences.Where(x => x.DateTime >= FromDate && x.DateTime <= toDate);
+
+
+        //        return Json(new { message = "success", studentList = students.ToList() }, JsonRequestBehavior.AllowGet);
+        //    }
+
+        //    return Json(new { message="error"}, JsonRequestBehavior.AllowGet);
+        //}
 
 
         protected override void Dispose(bool disposing)

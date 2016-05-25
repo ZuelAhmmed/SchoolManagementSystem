@@ -530,7 +530,6 @@
     <Content Include="Views\StudentAttendence\Delete.cshtml" />
     <Content Include="Views\StudentAttendence\Details.cshtml" />
     <Content Include="Views\StudentAttendence\Edit.cshtml" />
-    <Content Include="Views\StudentAttendence\Index.cshtml" />
     <Content Include="Views\EmployeeAccount\Create.cshtml" />
     <Content Include="Views\EmployeeAccount\Delete.cshtml" />
     <Content Include="Views\EmployeeAccount\Details.cshtml" />
@@ -543,6 +542,7 @@
     <Content Include="Views\StudentAccount\Details.cshtml" />
     <Content Include="Views\StudentAccount\Edit.cshtml" />
     <Content Include="Views\StudentAccount\Index.cshtml" />
+    <Content Include="Views\StudentAttendence\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
